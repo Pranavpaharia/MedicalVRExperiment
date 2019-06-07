@@ -33,14 +33,14 @@ public class Gazer : MonoBehaviour
                 
                 currentTime = 0;
                 bGaze = false;
-                Debug.Log("Hack");
+                //Debug.Log("Hack");
                 if(button)
                 button.onClick.Invoke();
 
                 if(buttonImage)
                 {
                     buttonColor = buttonImage.color;
-                    buttonImage.color = new Color(buttonColor.r, buttonColor.g, buttonColor.b, 0.2f);
+                    //buttonImage.color = new Color(buttonColor.r, buttonColor.g, buttonColor.b, 0.2f);
                     audiocomponent.Play();
                     Invoke("ButtonColorToggled", 1.0f);
                 }
@@ -51,7 +51,6 @@ public class Gazer : MonoBehaviour
                     toggle.onValueChanged.Invoke(bToggle);
                     bToggle = !bToggle;
                     audiocomponent.Play();
-
                 }
 
                 
@@ -70,11 +69,11 @@ public class Gazer : MonoBehaviour
         if(Objectname == "SkipButton")
         {
             button.interactable = false;
-            buttonImage.color = new Color(buttonColor.r, buttonColor.g, buttonColor.b, 0.0f);
+           // buttonImage.color = new Color(buttonColor.r, buttonColor.g, buttonColor.b, 0.0f);
         }
         else
         { 
-            buttonImage.color = new Color(buttonColor.r, buttonColor.g, buttonColor.b, 1.0f);
+          //  buttonImage.color = new Color(buttonColor.r, buttonColor.g, buttonColor.b, 1.0f);
         }
     }
 
