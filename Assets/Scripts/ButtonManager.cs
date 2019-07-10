@@ -30,8 +30,11 @@ public class ButtonManager : MonoBehaviour
 
         Debug.Log(canvasTransform);
 
-
-
+        mat_detector.color = Color.white;
+        mat_thermo.color = Color.white;
+        mat_sampler.color = Color.white;
+        mat_pump.color = Color.white;
+        mat_reservoir.color  = Color.white; ;
 
         int totalchild = canvasTransform.childCount;
 
@@ -126,6 +129,10 @@ public class ButtonManager : MonoBehaviour
     {
         img = go.GetComponent<Image>();
 
+        if (!DetectorButton.GetComponent<ButtonAction>().bActivated)
+            return;
+
+
         if (!bThermo && DetectorButton.GetComponent<ButtonAction>().bActivated)
         {
             mat_thermo.color = Color.green;
@@ -143,6 +150,11 @@ public class ButtonManager : MonoBehaviour
     public void SamplerButtonClick(GameObject go)
     {
         img = go.GetComponent<Image>();
+
+        if (!DetectorButton.GetComponent<ButtonAction>().bActivated || !ThermoButton.GetComponent<ButtonAction>().bActivated)
+            return;
+
+
 
         if (!bSampler && 
             DetectorButton.GetComponent<ButtonAction>().bActivated &&
@@ -164,6 +176,13 @@ public class ButtonManager : MonoBehaviour
     {
         img = go.GetComponent<Image>();
 
+
+        if (!DetectorButton.GetComponent<ButtonAction>().bActivated ||
+            !ThermoButton.GetComponent<ButtonAction>().bActivated ||
+            !SamplerButton.GetComponent<ButtonAction>().bActivated)
+            return;
+
+
         if (!bPump &&
             DetectorButton.GetComponent<ButtonAction>().bActivated &&
             ThermoButton.GetComponent<ButtonAction>().bActivated &&
@@ -184,6 +203,14 @@ public class ButtonManager : MonoBehaviour
     public void SolventButtonClick(GameObject go)
     {
         img = go.GetComponent<Image>();
+
+        if (!DetectorButton.GetComponent<ButtonAction>().bActivated ||
+            !ThermoButton.GetComponent<ButtonAction>().bActivated ||
+            !SamplerButton.GetComponent<ButtonAction>().bActivated ||
+            !PumpButton.GetComponent<ButtonAction>().bActivated)
+            return;
+
+
 
         if (!bSolvent &&
             DetectorButton.GetComponent<ButtonAction>().bActivated &&
